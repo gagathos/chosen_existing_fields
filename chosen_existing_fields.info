@@ -1,0 +1,4 @@
+name = Chosen Existing Fields
+description = Adds a chosen toggle to field administration UI when selecting from existing fields
+core = 7.x
+dependencies[] = chosen

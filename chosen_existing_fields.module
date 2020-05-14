@@ -1,0 +1,23 @@
+<?php 
+
+function chosen_existing_fields_form_field_ui_field_overview_form_alter(&$form, $form_values) {
+    if(isset($form['fields']['_add_existing_field']['field_name'])) {
+        drupal_add_js(drupal_get_path('module', 'chosen_existing_fields') . '/chosen_existing_fields.js');
+        
+        $form['fields']['_add_existing_field']['field_name']['#prefix'] .= '<span class="chosen-existing-fields-toggle" title="'.t('Toggle searchable dropdown').'"></span>';
+       drupal_add_css("
+.chosen-existing-fields-toggle {
+    display: inline-block;
+    opacity: 0.6;
+    width: 24px;
+    height: 24px;
+    background: url('".libraries_get_path('chosen', true)."/chosen-sprite.png') no-repeat 100% -20px;
+    float: left;
+    cursor: pointer;
+}
+.chosen-existing-fields-toggle.chosen-existing-fields-enabled {
+    opacity: 1;
+}
+",'inline');
+    }
+}
